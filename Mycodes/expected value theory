@@ -1,0 +1,183 @@
+Problems
+1. What is the expected number of coin flips for getting a head?
+
+Ans:
+
+
+Let the expected number of coin flips be x. Then we can write an equation for it -
+a. If the first flip is the head, then we are done. The probability of this event is 1/2 and the number of coin flips for this event is 1.
+b. If the first flip is the tails, then we have wasted one flip. Since consecutive flips are independent events, the solution in this case can be recursively framed in terms of x - The probability of this event is 1/2 and the expected number of coins flips now onwards is x. But we have already wasted one flip, so the total number of flips is x+1.
+
+The expected value x is the sum of the expected values of these two cases. Using the rule of linerairty of the expectation and the definition of Expected value, we get
+
+x = (1/2)(1) + (1/2) (1+x)
+Solving, we get x = 2.
+
+Thus the expected number of coin flips for getting a head is 2.
+
+Q2. What is the expected number of coin flips for getting two consecutive heads?
+
+Let the expected number of coin flips be x. The case analysis goes as follows:
+a. If the first flip is a tails, then we have wasted one flip. The probability of this event is 1/2 and the total number of flips required is x+1
+b. If the first flip is a heads and second flip is a tails, then we have wasted two flips. The probability of this event is 1/4 and the total number of flips required is x+2
+c. If the first flip is a heads and second flip is also heads, then we are done. The probability of this event is 1/4 and the total number of flips required is 2.
+
+Adding, the equation that we get is -
+x = (1/2)(x+1) + (1/4)(x+2) + (1/4)2
+
+Solving, we get x = 6.
+
+Thus, the expected number of coin flips for getting two consecutive heads is 6.
+
+Q3. (Generalization) What is the expected number of coin flips for getting N consecutive heads, given N?
+
+Let the exepected number of coin flips be x. Based on previous exercises, we can wind up the whole case analysis in two basic parts
+
+a) If we get 1st, 2nd, 3rd,...,n'th tail as the first tail in the experiment, then we have to start all over again.
+b) Else we are done.
+
+For the 1st flip as tail, the part of the equation is (1/2)(x+1)
+For the 2nd flip as tail, the part of the equation is (1/4)(x+2)
+...
+For the k'th flip as tail, the part of the equation is (1/(2k))(x+k)
+...
+For the N'th flip as tail, the part of the equation is (1/(2N))(x+N)
+The part of equation corrresponding to case (b) is (1/(2N))(N)
+
+Adding,
+
+x = (1/2)(x+1) + (1/4)(x+2) + ... + (1/(2^k))(x+k) + .. + (1/(2^N))(x+N) + (1/(2^N))(N)
+
+Solving this equation is left as an exercise to the reader. The entire equation can be very easily reduced to the following form:
+
+x = 2N+1-2
+
+Thus, the expected number of coin flips for getting N consecutive heads is (2N+1 - 2).
+
+Q4. Candidates are appearing for interview one after other. Probability of each candidate getting selected is 0.16. What is the expected number of candidates that you will need to interview to make sure that you select somebody?
+
+This is very similar to Q1, the only difference is that in this case the coin is biased. (The probability of heads is 0.16 and we are asked to find number of coin flips for getting a heads).
+Let x be the expected number of candidates to be interviewed for a selection. The probability of first candidate getting selected is 0.16 and the total number of interviews done in this case is 1. The other case is that the first candidate gets rejected and we start all over again. The probability for that is (1-0.16)*(x+1). The equation thus becomes -
+
+x = 0.16 + (1-0.16)*(x+1)
+
+Solving, x = 1/0.16, i.e. x = 6.25
+
+ 
+
+Q5. (Generalized version of Q4) - The queen of a honey bee nest produces offsprings one-after-other till she produces a male offspring. The probability of produing a male offspring is p. What is the expected number of offsprings required to be produced to produce a male offspring?
+
+This is same as the previous question, except that the number 0.16 has been replaced by p. Observe that the equation now becomes -
+
+x = p + (1-p)*(x+1)
+Solving, x = 1/p
+
+Thus, observe that in the problems where there are two events, where one event is desirable and other is undesirable, and the probability of desirable event is p, then the expected number of trials done to get the desirable event is 1/p
+
+Generalizing on the number of events - If there are K events, where one event is desirable and all others are undesirable, and the probability of desirable event is p, then also the expected number of trials done to get the desirable event is 1/p
+
+The next question uses this generalization -
+
+Q6. what is the expected number of dice throws required to get a "four"?
+
+Let the expected number of throws be x. The desirable event (getting 'four') has probability 1/6 (as each face is equiprobable). There are 5 other undesirable events (K=5). Note that the value of the final answer doesnot depend on K. The answer is thus 1/(1/6) i.e. 6.
+
+ 
+
+Q7.Candidates are appearing for interview one after other. Probability of k-th candidate getting selected is 1/(k+1). What is the expected number of candidates that you will need to interview to make sure that you select somebody?
+
+The result will be the sum of infinite number of cases -
+
+case-1: First candidate gets selected. The probability of this event is 1/2 and the number of interviews is 1.
+case-2. Second candidate gets selected. The probability of this event is 1/6 (= 1/2 of first candidate not getting selected and 1/3 of second candidate getting selected, multiplied together gives 1/6) and the number of interviews is 2
+case-3. Third candidate gets selected. The probability of this event is 1/2 * 2/3 * 1/4 = 1/12 (= first not getting selected and second not getting selected and third getting selected) and the number of interviews is 3.
+...
+case-k. k'th candidate gets selected. The probability of this event is 1/2 * 2/3 * 3/4 * ... * (k-1)/k * 1/(k+1). (The first k-1 candidates get rejected and the k'th candidate is selected). This evaluates to 1/(k*(k+1)) and the number of interviews is k
+...
+
+[ Note that similar to problem 4, here we can't just say - if the first candidate is rejected, then we will start the whole process again. This is not correct, because the probabilty of each candidate depends on it's sequence number. Hence sub-experiments are not same as the parent experiment. This means that all the cases must be explicitly considered.]
+The resultant expression will be
+
+
+x = 1/(1*2) + 2/(2*3) + 3/(3*4) + 4/(4*5) + ... + k/(k*(k+1)) + ...
+= 1/2 + 1/3 + 1/4 + ...
+
+
+This is a well-known divergent series, which means that sum doesnot converge, and hence the expectation doesnot exist.
+
+Q8: A random permutation P of [1...n] needs to be sorted in ascending order. To do this, at every step you will randomly choose a pair (i,j) where i < j but P[i] > P[j], and swap P[i] with P[j]. What is the expected number of swaps needed to sort permutation in ascending order. (Idea: Topcoder)
+
+This is a programming question, and the idea is simple - since each swap has same probability of getting selected, the total number of expected swaps for a permutation P­­­­­­­ is
+
+E[P] = ( 1/cnt ) * Σ (E[Ps] + 1)
+
+where cnt is the total number of swaps possible in permutation P, and Ps ­­­­­­­­­is the permutation generated by doing swap 's'. Since all swaps are equiprobable, we simply sum up the expected values of the resultant permutations (of course add 1 to each to account for the swap done already) and divide the result by the total number of permutations. The base case will be for the array that has been already sorted - and the expected number of permutations for a sorted array is 0.
+
+Coding this is left as a (trivial) exercise to the reader.
+
+Q9. A fair coin flip experiment is carried out N times. What is the expected number of heads?
+
+Consider an experiment of flipping a fair coin N times and let the outcomes be represented by the array Z = {a1, a2,... ,an} where each ai is either 1 or 0 depending on whether the outcome was heads or tails respectively. In other words, for each i we have -
+
+ai = if the i'th experiment gave head then 1 else 0.
+
+Hence we have:
+number of heads in z = a1+ a2 + ... + an
+Hence E[number of heads in z] = E[a1+ a2 + ... + an]
+= E[a1] + E[a2] + ... + E[an]
+
+Since ai corresponds to a coin-toss experiment, the value of E[ai] is 0.5 for each i. Adding this n times, the expected number of heads in Z comes out to be n/2.
+
+Q10: (Bernaulli Trials) n students are asked to choose a number from 1 to 100 inclusive. What is the expected number of students that would choose a single digit number?
+
+This question is based on the concept of bernaulli trials.An experiment is called a bernaulli trial if it has exactly two outcomes, one of which is desired. For example - flipping a coin,  selecting a number from 1 to 100 to get a prime, rolling a dice to get 4 etc. The result of a bernaulli trial can typically be represented as "yes/no" or "success/failure". We have seen in Q5 above that if the probability of success of a bernaulli trial is p then the expected number of trials to get a success is 1/p. is
+
+This question is based on yet another result related to bernaulli trials - If the probability of a success in a bernaulli trial is p then the expected number of successes in n trials is n*p. The proof is simple -
+
+The number of successes in n trials = (if 1st trial is success then 1 else 0) + ... + (if nth trial is success then 1 else 0)
+The expected value of each bracket is  1*p + 0*(1-p) = p. Thus the expected number of successes in n trials is n*p.
+
+In the current case, "success" is defined as the experiment that chooses a single digit number. Since all choices are equiprobable, the probability of success is 9/100. (There are 9 single digit numbers in 1 to 100). Since there are n students, the expected number of students that would contribute to success (i.e the expected number of successes) is n*9/100
+
+Q11. What is the expected number of coin flips to ensure that there are atleast N heads?
+
+The solution can easily be framed in a recursive manner -
+
+N heads = if 1st flip is a head then N-1 more heads, else N more heads.
+The probability of 1st head is 1/2. Thus
+
+E[N] = (1/2)(E[N-1]+1)+ (1/2)(E[N] + 1)
+Note that each term has 1 added to it to account for the first flip.
+
+The base case is when N = 1 :
+E[1] = 2 (As discussed in Q2)
+
+Simplifying the recursive case,
+E[N] = (1/2)( E[N-1] +1 + E[N] + 1)
+= (1/2)( E[N-1] + E[N] + 2)
+=> 2 * E[N] = ( E[N-1] + E[N] + 2)
+=> E[N] = E[N-1] + 2
+
+Since E[1] = 2, E[2] = 4, E[3] = 6,..., in general E[N] = 2N. Thus, the expected number of coin flips to ensure that there are atleast N heads in 2N.
+
+The next problem discusses a generalization :
+
+Q12. What is the expected number of bernaulli trials to ensure that there are atleast N successes, if the probability of each success is p?
+
+The recursive equation in this case is -
+
+E[N] = p(E[N-1]+1)+ (1- p)(E[N] + 1)
+
+Solving, E[N]-E[N-1] = p. Writing a total of N-1 equations:
+
+E[N]-E[N-1] = 1/p
+E[N-1]-E[N-2] = 1/p
+E[N-2]-E[N-3] = 1/p
+...
+E[2]-E[1] = 1/p
+
+Adding them all, E[N] - E[1] = (n-1)/p. But E[1] is 1/p (lemma -1). Hence E[N] = n/p.
+
+Moral: If probability of success in a bernaulli trial is p, then the expected number of trials to guaranttee N successes is N/p.
+
+This completes the discussion on problems on Mathematical Expectation.
