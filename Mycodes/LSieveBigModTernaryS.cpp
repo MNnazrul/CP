@@ -49,7 +49,7 @@ void solve()
 //
 int mod = 1e9 + 7;
 
-int binpow(int a, int b, int m) {
+int bigmod(int a, int b, int m) {
     a %= m;
     int res = 1;
     while (b > 0) {
