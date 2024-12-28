@@ -21,3 +21,14 @@ The HashSet class in Java is part of the java.util package and implements the Se
     - If multiple elements have the same hash code, they are stored in the same bucket as a linked list (or tree structure in Java 8+ for performance).
   - Equality Check:
     - Before adding an element, HashSet checks if an equivalent element (using equals() method) already exists in the set.
+
+## Common Methods in HashSet
+
+1. add(E e):
+  - Adds the specified element to the set.
+  - Returns true if the element was added successfully (i.e., it was not already present).
+  ```java
+  HashSet<Integer> set = new HashSet<>();
+  set.add(1); // true
+  set.add(1); // false (duplicate)
+  ```
