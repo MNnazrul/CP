@@ -58,16 +58,15 @@ The HashSet class in Java is part of the java.util package and implements the Se
   - Checks if the set is empty.
   - Returns true if the set has no elements.
   ```java
-  Copy code
-  set.isEmpty(); // true
-```
+  set.isEmpty(); // true  
+  ```
 
 * clear():
   - Removes all elements from the set.
   ```java
   Copy code
   set.clear();
-```
+  ```
 
 * iterator():
   - Returns an iterator for traversing the set.
@@ -77,3 +76,15 @@ The HashSet class in Java is part of the java.util package and implements the Se
       System.out.println(value);
   }
   ```
+
+
+| **Method**               | **Time Complexity (Average Case)** | **Time Complexity (Worst Case)** | **Explanation**                                                                 |
+|--------------------------|-----------------------------------|-----------------------------------|---------------------------------------------------------------------------------|
+| **`add(E e)`**           | `O(1)`                          | `O(n)`                          | Adding relies on hashing. Worst case due to hash collisions.                   |
+| **`contains(Object o)`** | `O(1)`                          | `O(n)`                          | Membership check is fast; worst case with hash collisions.                     |
+| **`remove(Object o)`**   | `O(1)`                          | `O(n)`                          | Removal uses hashing. Worst case occurs with many collisions.                  |
+| **`size()`**             | `O(1)`                          | `O(1)`                          | Retrieves the size from an internal variable.                                  |
+| **`isEmpty()`**          | `O(1)`                          | `O(1)`                          | Checks if the size is `0`.                                                     |
+| **`clear()`**            | `O(n)`                          | `O(n)`                          | Removes all elements, requiring traversal of the set.                          |
+| **`iterator()`**         | `O(n)`                          | `O(n)`                          | Iteration visits all elements in the set.                                      |
+
