@@ -24,11 +24,56 @@ The HashSet class in Java is part of the java.util package and implements the Se
 
 ## Common Methods in HashSet
 
-1. add(E e):
-  - Adds the specified element to the set.
-  - Returns true if the element was added successfully (i.e., it was not already present).
+* add(E e):
+    - Adds the specified element to the set.
+    - Returns true if the element was added successfully (i.e., it was not already present).
+    ```java
+    HashSet<Integer> set = new HashSet<>();
+    set.add(1); // true
+    set.add(1); // false (duplicate)
+    ```
+    
+* contains(Object o):
+    - Checks if the set contains the specified element.
+    - Returns true if the element is found.
+    ``` java
+    Copy code
+    set.contains(1); // true
+    ```
+
+* remove(Object o):
+  - Removes the specified element from the set if it is present.
+  - Returns true if the element was removed.
+  ``` java
+  set.remove(1); // true
+  ```
+
+* size():
+  - Returns the number of elements in the set.
   ```java
-  HashSet<Integer> set = new HashSet<>();
-  set.add(1); // true
-  set.add(1); // false (duplicate)
+  set.size(); // 0
+  ```
+
+* isEmpty():
+  - Checks if the set is empty.
+  - Returns true if the set has no elements.
+  ```java
+  Copy code
+  set.isEmpty(); // true
+```
+
+* clear():
+  - Removes all elements from the set.
+  ```java
+  Copy code
+  set.clear();
+```
+
+* iterator():
+  - Returns an iterator for traversing the set.
+  ```java
+  Copy code
+  for (int value : set) {
+      System.out.println(value);
+  }
   ```
