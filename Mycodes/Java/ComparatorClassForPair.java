@@ -34,7 +34,7 @@ class Pair {
         return (p1, p2) -> {
             if(p1.x != p2.x) return Integer.compare(p1.x, p2.x);
             return Integer.compare(p1.y, p2.y);
-        }
+        };
     }
 }
 
