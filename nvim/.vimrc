@@ -8,6 +8,12 @@ set cursorline       " Highlight the current line
 set clipboard=unnamedplus " System clipboard access
 set nocursorline
 
+" enable smart indentation
+" set autoindent
+" set smartindent
+" set cindent
+
+
 syntax on            " Enable syntax highlighting
 filetype plugin on   " Enable filetype-specific plugins
 
